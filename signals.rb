@@ -8,7 +8,9 @@ end
 
 Signal.trap("TERM") do
   log "TERM received"
-  sleep 10
+  delay = 60
+  log "Sleeping for #{delay} seconds, then shutting down"
+  sleep delay
   log "shutting down"
   exit(0)
 end
