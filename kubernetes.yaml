@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -12,4 +13,13 @@ spec:
       containers:
       - name: signals-test
         image: ministryofjustice/signals-test:0.3
-      terminationGracePeriodSeconds: 40
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: signals-test-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: signals-test

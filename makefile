@@ -29,3 +29,4 @@ watch:
 
 clean:
 	kubectl -n dstest delete deployment signals-test
+	kubectl -n dstest delete poddisruptionbudget signals-test-pdb
