@@ -12,3 +12,4 @@ spec:
       containers:
       - name: signals-test
         image: ministryofjustice/signals-test:0.3
+      terminationGracePeriodSeconds: 40
