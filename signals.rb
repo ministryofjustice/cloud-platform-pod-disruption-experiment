@@ -6,8 +6,6 @@ def log(msg)
   puts "#{Time.now.strftime('%Y-%m-%d %H:%M:%S')} #{msg}"
 end
 
-log "Pid: #{$$}"
-
 Signal.trap("TERM") do
   log "TERM received"
   sleep 10
