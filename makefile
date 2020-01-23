@@ -1,5 +1,5 @@
 IMAGE := ministryofjustice/signals-test
-VERSION := 0.1
+VERSION := 0.3
 
 build: .built-docker-image
 
@@ -20,3 +20,6 @@ stop:
 
 kill:
 	docker kill $(IMAGE)
+
+deploy:
+	kubectl -n dstest apply -f kubernetes.yaml
