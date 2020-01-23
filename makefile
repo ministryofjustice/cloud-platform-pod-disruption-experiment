@@ -1,16 +1,22 @@
-TAG := signals-test
+IMAGE := ministryofjustice/signals-test
+VERSION := 0.1
 
-build:
-	docker build -t $(TAG) .
+build: .built-docker-image
+
+.built-docker-image: Dockerfile makefile signals.rb
+	docker build -t $(IMAGE) .
+	touch .built-docker-image
+
+push: .built-docker-image
+	docker tag $(IMAGE) $(IMAGE):$(VERSION)
+	docker push $(IMAGE):$(VERSION)
 
 run:
-	docker run --name $(TAG) --rm -d $(TAG)
-	docker logs $(TAG) -f
+	docker run --name $(IMAGE) --rm -d $(IMAGE)
+	docker logs $(IMAGE) -f
 
 stop:
-	docker stop $(TAG)
+	docker stop $(IMAGE)
 
 kill:
-	docker kill $(TAG)
-
-
+	docker kill $(IMAGE)
