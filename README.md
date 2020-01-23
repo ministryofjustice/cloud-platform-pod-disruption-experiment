@@ -23,7 +23,7 @@ kubectl -n dstest logs [pod name] -f
 In a separate window:
 
 ```
-watch kubectl -n dstest get pods
+make watch
 ```
 
 ## Delete the pod
@@ -43,5 +43,5 @@ kubectl -n dstest delete pod [pod name] --grace-period=5
 ## Clean up
 
 ```
-kubectl -n dstest delete deployment signals-test
+make clean
 ```

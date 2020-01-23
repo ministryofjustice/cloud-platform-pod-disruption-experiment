@@ -23,3 +23,9 @@ kill:
 
 deploy:
 	kubectl -n dstest apply -f kubernetes.yaml
+
+watch:
+	watch kubectl -n dstest get pods
+
+clean:
+	kubectl -n dstest delete deployment signals-test
